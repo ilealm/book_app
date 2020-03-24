@@ -5,13 +5,18 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 const PORT = process.env.PORT || 3001;
-const pg = require('pg');
-const superagent = require('superagent');
+// const pg = require('pg');
+// const superagent = require('superagent');
 
+const ejs = require('ejs')      
+app.set('view engine', 'ejs')
 
+app.use(express.static('./public/'));
+// app.use(express.urlencoded({extended:true}));
 
-
-
+app.get('/index', (req, res) => {
+    res.render('./pages/index.ejs');
+});
 
 
 app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
