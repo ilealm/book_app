@@ -36,8 +36,8 @@ Finish time: 11:05
 Actual time needed to complete: 20min
 
 Number and name of feature: 11.3 - browse results
-Estimate of time needed to complete: _____
-Start time: 
+Estimate of time needed to complete: 90 min
+Start time: 11:20am
 Finish time: 
 Actual time needed to complete: 
 
