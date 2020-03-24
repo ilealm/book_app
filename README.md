@@ -23,12 +23,38 @@
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 -->
 
-Number and name of feature: ________________________________
+Number and name of feature: 11.1 - setup
+Estimate of time needed to complete: 60min
+Start time: 9:30am
+Finish time: 10:45am
+Actual time needed to complete: 75 min
 
+Number and name of feature: 11.2 - books api
 Estimate of time needed to complete: _____
+Start time: 
+Finish time: 
+Actual time needed to complete: 
 
-Start time: _____
+Number and name of feature: 11.3 - browse results
+Estimate of time needed to complete: _____
+Start time: 
+Finish time: 
+Actual time needed to complete: 
 
-Finish time: _____
+Number and name of feature: 11.4 - error messages
+Estimate of time needed to complete: _____
+Start time: 
+Finish time: 
+Actual time needed to complete: 
 
-Actual time needed to complete: _____
+Number and name of feature: 11.5 - UI
+Estimate of time needed to complete: _____
+Start time: 
+Finish time: 
+Actual time needed to complete: 
+
+Number and name of feature: 11.6 - Home Page
+Estimate of time needed to complete: _____
+Start time: 
+Finish time: 
+Actual time needed to complete: 
