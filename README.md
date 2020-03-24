@@ -30,10 +30,10 @@ Finish time: 10:45am
 Actual time needed to complete: 75 min
 
 Number and name of feature: 11.2 - books api
-Estimate of time needed to complete: _____
-Start time: 
-Finish time: 
-Actual time needed to complete: 
+Estimate of time needed to complete: 45 min
+Start time: 10:45
+Finish time: 11:05
+Actual time needed to complete: 20min
 
 Number and name of feature: 11.3 - browse results
 Estimate of time needed to complete: _____
