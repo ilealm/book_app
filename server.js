@@ -14,17 +14,17 @@ const superagent = require('superagent');
 
 
 
+app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
 
 
-
-const database = new pg.Client(process.env.DATABASE_URL);
-database.on('error', err => console.error(err));
+// const database = new pg.Client(process.env.DATABASE_URL);
+// database.on('error', err => console.error(err));
 
 //404 error is no page is found
-app.get('*', (request, response) => response.status(404).send('Sorry, chuck norris says that route does not exist.'));
+// app.get('*', (request, response) => response.status(404).send('Sorry, chuck norris says that route does not exist.'));
 
 // only turn on the server if you first connect to the database
-database.connect()
-    .then(() => {
-        app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
-    });
+// database.connect()
+//     .then(() => {
+//         app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
+//     });
