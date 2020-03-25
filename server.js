@@ -23,22 +23,28 @@ app.get('/searches/new', (req, res) => {
 });
 
 app.get('/',getBooks);
+app.get('/books/:book_id',getOneBook);
 
-// app.get('/', (req, res) => {
-//   res.render('pages/index.ejs');
-// });
+
 
 function getBooks(request, response){
   let sql = 'SELECT * FROM myBooks;';
   database.query(sql)
     .then(results =>{
       let arrMyBooks = results.rows;
-      // let myBookCount = arrMyBooks.length
-      // console.log('myBookCount',myBookCount);
-      // TODO: send the book count
-      // response.render('./pages/index.ejs',{ myCount : myBookCount});
       response.render('./pages/index.ejs',{ myBooks : arrMyBooks});
     })
+}
+
+function getOneBook(request, response){
+  let myParams= request.params;
+  let sql = 'SELECT * FROM myBooks WHERE id=$1;';
+  let safeValues = [myParams.book_id];
+  database.query(sql,safeValues)
+    .then(results =>{
+      response.render('pages/books/detail.ejs',{myBook : results.rows})
+    })
+
 }
 
 

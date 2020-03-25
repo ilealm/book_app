@@ -65,3 +65,10 @@ Estimate of time needed to complete: 45
 Start time: 10:10
 Finish time: 
 Actual time needed to complete: 
+
+
+Number and name of feature: 12.2 - View single book
+Estimate of time needed to complete: 45
+Start time: 11:35
+Finish time: 12:40
+Actual time needed to complete:  65
