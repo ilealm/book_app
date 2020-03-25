@@ -1,7 +1,50 @@
 * {
-    background-color: salmon;
+    background-color: black;
 }
 
 h1 {
-    color: red;
+    color:white;
+    background-color: black;
+}
+
+body{
+    background-color: lightgrey;
+}
+
+img{
+    width: 200px;
+    border: 5px white;
+
+}
+
+
+#description{
+    background-color: white
+}
+
+#title, #author{
+    background-color: lightgrey;
+}
+
+#title{
+    color:white;
+}
+
+#ISBN{
+    background-color: lightgrey;
+}
+
+ol{
+    background-color: gray;
+}
+
+@media all and (max-width:1024px){
+    *{
+        background-color: lightgrey;
+    }
+
+    body{
+        background-color: black;
+    }
+
 }
