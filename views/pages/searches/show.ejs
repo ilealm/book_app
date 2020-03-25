@@ -11,10 +11,10 @@
   <ol>
   <!-- I want to display all of my results from the google Books API here using ejs -->
   <%Book.forEach(result =>{%>
+    <img src="<%= result.image %>">
     <li><%=result.title%> </li>
     <li><%=result.authors%> </li>
     <li><%=result.description%> </li>
-    <li><%=result.image%> </li>
   <%})%>
 </ol>
 </body>
