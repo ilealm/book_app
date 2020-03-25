@@ -24,6 +24,7 @@ app.get('/searches/new', (req, res) => {
 
 app.get('/',getBooks);
 app.get('/books/:book_id',getOneBook);
+app.post('/books',addBook);
 
 
 
@@ -44,9 +45,13 @@ function getOneBook(request, response){
     .then(results =>{
       response.render('pages/books/detail.ejs',{myBook : results.rows})
     })
-
 }
 
+function addBook(request, response){
+  console.log ('in addBook',request.body);
+  // TODO: we where trying to obtain the info to save on DB
+
+}
 
 
 app.post('/searches', (request, response) => {
@@ -68,7 +73,7 @@ app.post('/searches', (request, response) => {
     .then(results => {
       let bookArray = results.body.items;
       // console.log(bookArray);
-      console.log(results.body.items[0].volumeInfo)
+      // console.log(results.body.items[0].volumeInfo)
       let finalBookArray = bookArray.map(book => {
         return new Book(book.volumeInfo);
       })

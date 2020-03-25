@@ -5,6 +5,10 @@ a{
     color: white;
 }
 
+
+input{
+    width: 250px;
+}
 h1 {
     color:white;
     background-color: black;

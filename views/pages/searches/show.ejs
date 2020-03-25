@@ -9,17 +9,35 @@
 </head>
 <body>
   <h1>Best Books!</h1>
-  <ol>
+  <form method="POST" action="/books">
   <!-- I want to display all of my results from the google Books API here using ejs -->
   <%Book.forEach(result =>{%>
-    <img src="<%= result.image %>">
+    <!-- <img src="<%= result.image_url %>">
     <li id="title"><%=result.title%> </li>
-    <li id="author"><%=result.authors%> </li>
+    <li id="author"><%=result.author%> </li>
     <li id="description"><%=result.description%> </li>
-    <li id="ISBN"><%=result.ISBN%> </li>
-    
+    <li id="ISBN"><%=result.isbn%> </li> -->
+    <label>Title</label>
+    <input type="text" id="title" placeholder= "<%= result.title %>">
+    <br>
+    <label>Image URL</label>
+    <input type="text" id="title" placeholder= "<%= result.image_url %>">
+    <br>
+    <label>Author</label>
+    <input type="text" id="title" placeholder= "<%= result.authors%>">
+    <br>
+    <label>Description</label>
+    <input type="text" id="title" placeholder= "<%= result.description %>">
+    <br>
+    <label>ISBN</label>
+    <input type="text" id="title" placeholder= "<%= result.isbn %>">
+    <br>
+    <button type="submit">Add to my Books</button>
   <%})%>
-</ol>
+
+
+</form>
+
 </body>
 </html>
 
