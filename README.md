@@ -42,19 +42,33 @@ Finish time:
 Actual time needed to complete: 
 
 Number and name of feature: 11.4 - error messages
-Estimate of time needed to complete: _____
-Start time: 
-Finish time: 
-Actual time needed to complete: 
+Estimate of time needed to complete: 10m
+Start time: 9:00am
+Finish time: 9:10am
+Actual time needed to complete: 10m
 
 Number and name of feature: 11.5 - UI
-Estimate of time needed to complete: _____
-Start time: 
-Finish time: 
-Actual time needed to complete: 
+Estimate of time needed to complete: 1h
+Start time: 9:10am
+Finish time:  10:00
+Actual time needed to complete: 50m.
 
 Number and name of feature: 11.6 - Home Page
 Estimate of time needed to complete: _____
 Start time: 
 Finish time: 
 Actual time needed to complete: 
+
+
+Number and name of feature: 12.1 - 
+Estimate of time needed to complete: 45
+Start time: 10:10
+Finish time: 
+Actual time needed to complete: 
+
+
+Number and name of feature: 12.2 - View single book
+Estimate of time needed to complete: 45
+Start time: 11:35
+Finish time: 12:40
+Actual time needed to complete:  65

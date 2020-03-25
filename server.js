@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 const PORT = process.env.PORT || 3001;
-// const pg = require('pg');
+const pg = require('pg');
 const superagent = require('superagent');
 
 const ejs = require('ejs')
@@ -14,14 +14,38 @@ app.set('view engine', 'ejs')
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended:true}));
 
+
+const database = new pg.Client(process.env.DATABASE_URL);
+database.on('error', err => console.error(err));
+
 app.get('/searches/new', (req, res) => {
   res.render('pages/searches/new.ejs');
 });
 
-app.get('/', (req, res) => {
-  res.render('pages/index.ejs');
-});
+app.get('/',getBooks);
+app.get('/books/:book_id',getOneBook);
 
+
+
+function getBooks(request, response){
+  let sql = 'SELECT * FROM myBooks;';
+  database.query(sql)
+    .then(results =>{
+      let arrMyBooks = results.rows;
+      response.render('./pages/index.ejs',{ myBooks : arrMyBooks});
+    })
+}
+
+function getOneBook(request, response){
+  let myParams= request.params;
+  let sql = 'SELECT * FROM myBooks WHERE id=$1;';
+  let safeValues = [myParams.book_id];
+  database.query(sql,safeValues)
+    .then(results =>{
+      response.render('pages/books/detail.ejs',{myBook : results.rows})
+    })
+
+}
 
 
 
@@ -45,8 +69,6 @@ app.post('/searches', (request, response) => {
       let bookArray = results.body.items;
       // console.log(bookArray);
       console.log(results.body.items[0].volumeInfo)
-
-
       let finalBookArray = bookArray.map(book => {
         return new Book(book.volumeInfo);
       })
@@ -67,8 +89,8 @@ function Book (obj) {
   this.authors = (obj.authors[0]) ? obj.authors[0] : 'Iris Leal says she wrote this book';
   this.description = (obj.description) ? obj.description : 'Corey says you should probably just watch the moview';
   //TODO: Prevent mixed content warnings
-  this.image = (obj.imageLinks) ? obj.imageLinks.thumbnail : placeholderImage;
-  this.ISBN = obj.industryIdentifiers[0].identifier;
+  this.image_url = (obj.imageLinks) ? obj.imageLinks.thumbnail : placeholderImage;
+  this.isbn = obj.industryIdentifiers[0].identifier;
   // console.log(this.image);
   //ISBN - same as imageLinks
   // industryIdentifiers:
@@ -84,16 +106,15 @@ function Book (obj) {
 }
 
 
-app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
+// app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
 
 
-// const database = new pg.Client(process.env.DATABASE_URL);
-// database.on('error', err => console.error(err));
+
 
 
 
 // only turn on the server if you first connect to the database
-// database.connect()
-//     .then(() => {
-//         app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
-//     });
+database.connect()
+.then(() => {
+    app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
+});

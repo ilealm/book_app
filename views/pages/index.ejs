@@ -9,6 +9,25 @@
 <body>
   <h1>My Favorite Books</h1>
   <a href="searches/new">Search Here!</a>
-  <!-- This is where I am going to display my saved books...eventually -->
+
+  <ul>
+ <% myBooks.forEach(book =>{ %>
+<section>
+
+    <!-- <img src="<%= book.image_url %>"> -->
+    <!-- <li id="id"><%=book.id%> </li> -->
+    <li id="title"><%=book.title%> </li>
+
+    <li id="author"><%=book.author%> </li>
+    <li id="description"><%=book.description%> </li>
+    <li id="isbn"><%=book.isbn%> </li>
+    <a href="/books/<%=book.id%>">View details</a>
+   
+ <% })%>
+
+</section>  
+</ul>
+
+
 </body>
 </html>
