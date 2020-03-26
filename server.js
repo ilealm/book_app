@@ -19,7 +19,7 @@ const database = new pg.Client(process.env.DATABASE_URL);
 database.on('error', err => console.error(err));
 
 app.get('/searches/new', (req, res) => {
-  res.render('pages/searches/new.ejs');
+    res.render('pages/searches/new.ejs');
 });
 
 app.get('/',getAllMyBooks);
@@ -27,6 +27,8 @@ app.post('/searches', doSearch);
 app.get('/books/:book_id',getOneBook);
 app.post('/books',addBook);
 
+//404 error is no page is found
+app.get('*', (request, response) => response.status(400).render('./pages/error.ejs'));
 
 
 function getAllMyBooks(request, response){
@@ -36,7 +38,7 @@ function getAllMyBooks(request, response){
       let arrMyBooks = results.rows;
       response.render('./pages/index.ejs',{ myBooks : arrMyBooks});
     })
-}
+ }
 
 function doSearch(request,response){
   // console.log('cd and li search', request.body);
@@ -59,7 +61,7 @@ function doSearch(request,response){
       // console.log(bookArray);
       // console.log(results.body.items[0].volumeInfo)
       //TODO VALIDATE IF BOOKARRAY IS EMPTY
-      console.log(bookArray[0].volumeInfo)
+    //   console.log(bookArray[0].volumeInfo)
       let finalBookArray = bookArray.map(book => {
         return new Book(book.volumeInfo);
       })
@@ -80,7 +82,7 @@ function getOneBook(request, response){
 }
 
 function addBook(request, response){
-  console.log ('in addBook', request.body);
+//   console.log ('in addBook', request.body);
   let {title, image_url, authors, description, isbn } = request.body;
   let bookShelf = 'Favorites';
   let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url, bookShelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING ID;';
@@ -94,7 +96,7 @@ function addBook(request, response){
       database.query(sql,safeValues)
         .then(results =>{
         //   console.log(results);
-          response.render('./pages/books/detail.ejs',{myBook : results.rows})
+          response.render('./pages/books/show.ejs',{myBook : results.rows})
         })
     })
 }
@@ -102,8 +104,6 @@ function addBook(request, response){
 
 
 
-//404 error is no page is found
-app.get('*', (request, response) => response.render('./pages/error.ejs'));
 
 //lab 11.3.2 - "Prevent mixed content warnings. Resource URLs returned by the API that are  unsecure should be converted to use a secure protocol when the data is processed in the Book constructor." ?????????????????
 

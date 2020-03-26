@@ -1,15 +1,13 @@
-  <h1>Best Books Datails</h1>
 
-  <a href="./../"> Home </a>
   <section>
-    <%myBook.forEach(result =>{%>
+    <%myBook.forEach(results =>{%>
       <ul>
-        <img src="<%= result.image_url %>">
-        <li id="title"><%=result.title%> </li>
-        <li id="author"><%=result.author%> </li>
-        <li id="description"><%=result.description%> </li>
-        <li id="ISBN"><%=result.isbn%> </li>
-        <li id="bookShelf"><%=result.bookshelf%> </li>
+        <img src="<%= results.image_url %>">
+        <li id="title"><%=results.title%> </li>
+        <li id="author"><%=results.author%> </li>
+        <li id="description"><%=results.description%> </li>
+        <li id="ISBN"><%=results.isbn%> </li>
+        <li id="bookShelf"><%=results.bookshelf%> </li>
       </ul>
     <%})%>
   </section>
