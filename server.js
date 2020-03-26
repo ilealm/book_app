@@ -48,7 +48,7 @@ function getOneBook(request, response){
 }
 
 function addBook(request, response){
-  console.log ('in addBook', request.body);
+//   console.log ('in addBook', request.body);
   // TODO: we where trying to obtain the info to save on DB
   let {title, image_url, authors, description, isbn } = request.body;
   // console.log('FORM VALUES: ', title, image_url, authors, description, isbn);
@@ -64,7 +64,7 @@ function addBook(request, response){
       safeValues = [id];
       database.query(sql,safeValues)
         .then(results =>{
-          console.log(results);
+        //   console.log(results);
           response.render('./pages/books/detail.ejs',{myBook : results.rows})
         })
     })

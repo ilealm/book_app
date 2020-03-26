@@ -1,3 +1,113 @@
+
+/* //////////Mobile///////////////// */
+* {
+    box-sizing: border-box;
+  }
+
+
+main {
+      height: 767px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 50px 1fr 50px;
+      grid-template-rows: 100px 10% 10% 10% 10% 10% 10% 10% 10% 10% 1fr 10%;
+      /* grid-template-rows: 100px 75px 125px 125px 250px 250px 80px; */
+    }
+
+* {
+    background-color: rgb(102, 97, 97);
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start:1;
+    grid-column-end:3;
+}
+
+a {
+    background-color: black;
+    color: white;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start:3;
+    grid-column-end:4;
+}
+
+h4 {
+    background-color: rgb(75, 72, 72);
+    color: white;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start:1;
+    grid-column-end:4;
+    text-align: center;
+    
+}
+
+#enterTitleOrAuthor {
+    background-color: white;
+    color: black;
+    /* grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start:2;
+    grid-column-end:3; */
+}
+
+title {
+    /* background-color: white; */
+    color: black;
+    /* grid-row-start: 6;
+    grid-row-end: 7;
+    grid-column-start:2;
+    grid-column-end:3; */
+}
+
+
+
+button {
+    background-color: black;
+    color: white;
+}
+
+#a {
+  background-color: blue;
+  /* grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start:1;
+  grid-column-end:3; */
+}
+
+form {
+    display: grid;
+    grid-column-start: 2;
+    grid-row: 3 / 7;
+    text-align: center;
+    justify-self: stretch;
+    grid-template-rows: 80px 80px 80px 80px;
+    grid-row-gap: 20px;
+    text-align: left;
+    line-height: 100px;
+    color: white;
+   
+}
+  
+fieldset, span, input, label {
+    background-color: rgb(224, 209, 209);
+    color: black;
+}
+  
+  
+  
+
+
+
+/* ///////////////// Desktop ////////////// */
+@media all and (min-width:1024px){
+
+
 * {
     /* background-color: black; */
 }
@@ -45,13 +155,6 @@ ol{
     background-color: gray;
 }
 
-@media all and (max-width:1024px){
-    *{
-        background-color: lightgrey;
-    }
 
-    body{
-        background-color: black;
-    }
 
 }

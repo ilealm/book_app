@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/base.css">
+  <link rel="stylesheet" href="../styles/base.css">
   <title>Best Books!</title>
 </head>
 <body>
-  <h1>Best Books Datails</h1>
+  <h1>Best Books Details</h1>
 
   <a href="./../"> Home </a>
-  <ol>
+  <ul>
   
   <%myBook.forEach(result =>{%>
     <img src="<%= result.image_url %>">
@@ -21,6 +21,6 @@
     <li id="ISBN"><%=result.isbn%> </li>
     
   <%})%>
-</ol>
+</ul>
 </body>
 </html>
