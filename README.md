@@ -72,3 +72,9 @@ Estimate of time needed to complete: 45
 Start time: 11:35
 Finish time: 12:40
 Actual time needed to complete:  65
+
+Number and name of feature: 12.3 - Add to BD and render single new book
+Estimate of time needed to complete: 1.10
+Start time: 1:00; - 1:30, 6:00pm -7:00 pm 
+Finish time: 07:00pm
+Actual time needed to complete:  1.30
