@@ -51,20 +51,21 @@ function addBook(request, response){
   console.log ('in addBook', request.body);
   // TODO: we where trying to obtain the info to save on DB
   let {title, image_url, authors, description, isbn } = request.body;
-  console.log(title, image_url, authors, description, isbn );
+  // console.log('FORM VALUES: ', title, image_url, authors, description, isbn);
 
   let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url) VALUES ($1, $2, $3, $4, $5) RETURNING ID;';
   let safeValues = [title, image_url, authors, description, isbn];
-  // Corey: the data is been inserted on the BD, but is been inserted all in the sale column as an objec
+  // console.log('query: ', sql,safeValues);
   database.query(sql, safeValues)
     .then(results =>{
-      let id = results.rows;
-      sql = 'SELECT * FROM myBooks WHERE od = $1;';
+      let id = results.rows[0].id;
+      // console.log('new row: ', id);
+      sql = 'SELECT * FROM myBooks WHERE id = $1;';
       safeValues = [id];
-      database.connect(sql,safeValues)
+      database.query(sql,safeValues)
         .then(results =>{
           console.log(results);
-          // TODO redirect (render) to detail.ejs sending results
+          response.render('./pages/books/detail.ejs',{myBook : results.rows})
         })
     })
 }
@@ -90,6 +91,7 @@ app.post('/searches', (request, response) => {
       let bookArray = results.body.items;
       // console.log(bookArray);
       // console.log(results.body.items[0].volumeInfo)
+      //TODO VALIDATE IF BOOKARRAY IS EMPTY
       let finalBookArray = bookArray.map(book => {
         return new Book(book.volumeInfo);
       })
