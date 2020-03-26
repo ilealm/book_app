@@ -13,16 +13,13 @@
   <ul>
  <% myBooks.forEach(book =>{ %>
 <section>
-
-    <!-- <img src="<%= book.image_url %>"> -->
-    <!-- <li id="id"><%=book.id%> </li> -->
+    <img src="<%= book.image_url %>">
     <li id="title"><%=book.title%> </li>
-
     <li id="author"><%=book.author%> </li>
     <li id="description"><%=book.description%> </li>
     <li id="isbn"><%=book.isbn%> </li>
-    <a href="/books/<%=book.id%>">View details</a>
-   
+    <li id="bookShelf"><%=book.bookshelf%> </li>
+    <a href="/books/<%=book.id%>">View details</a>  
  <% })%>
 
 </section>  

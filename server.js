@@ -22,13 +22,14 @@ app.get('/searches/new', (req, res) => {
   res.render('pages/searches/new.ejs');
 });
 
-app.get('/',getBooks);
+app.get('/',getAllMyBooks);
+app.post('/searches', doSearch);
 app.get('/books/:book_id',getOneBook);
 app.post('/books',addBook);
 
 
 
-function getBooks(request, response){
+function getAllMyBooks(request, response){
   let sql = 'SELECT * FROM myBooks;';
   database.query(sql)
     .then(results =>{
@@ -37,39 +38,7 @@ function getBooks(request, response){
     })
 }
 
-function getOneBook(request, response){
-  let myParams= request.params;
-  let sql = 'SELECT * FROM myBooks WHERE id=$1;';
-  let safeValues = [myParams.book_id];
-  database.query(sql,safeValues)
-    .then(results =>{
-      response.render('pages/books/detail.ejs',{myBook : results.rows})
-    })
-}
-
-function addBook(request, response){
-  console.log ('in addBook', request.body);
-  let {title, image_url, authors, description, isbn } = request.body;
-  
-
-  let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url) VALUES ($1, $2, $3, $4, $5) RETURNING ID;';
-  let safeValues = [title, authors, description, isbn, image_url];
-
-  database.query(sql, safeValues)
-    .then(results =>{
-      let id = results.rows[0].id;
-      sql = 'SELECT * FROM myBooks WHERE id = $1;';
-      safeValues = [id];
-      database.query(sql,safeValues)
-        .then(results =>{
-          console.log(results);
-          response.render('./pages/books/detail.ejs',{myBook : results.rows})
-        })
-    })
-}
-
-
-app.post('/searches', (request, response) => {
+function doSearch(request,response){
   // console.log('cd and li search', request.body);
   // { search: [ '1984', 'title' ] }
   let thingTheyAreSearchingFor = request.body.search[0];
@@ -90,6 +59,7 @@ app.post('/searches', (request, response) => {
       // console.log(bookArray);
       // console.log(results.body.items[0].volumeInfo)
       //TODO VALIDATE IF BOOKARRAY IS EMPTY
+      console.log(bookArray[0].volumeInfo)
       let finalBookArray = bookArray.map(book => {
         return new Book(book.volumeInfo);
       })
@@ -97,7 +67,41 @@ app.post('/searches', (request, response) => {
       response.render('./pages/searches/show.ejs', {Book: finalBookArray});
     })
 
-});
+}
+
+function getOneBook(request, response){
+  let myParams= request.params;
+  let sql = 'SELECT * FROM myBooks WHERE id=$1;';
+  let safeValues = [myParams.book_id];
+  database.query(sql,safeValues)
+    .then(results =>{
+      response.render('pages/books/detail.ejs',{myBook : results.rows})
+    })
+}
+
+function addBook(request, response){
+  console.log ('in addBook', request.body);
+  let {title, image_url, authors, description, isbn } = request.body;
+  let bookShelf = 'Favorites';
+
+  let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url, bookShelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING ID;';
+  let safeValues = [title, authors, description, isbn, image_url, bookShelf];
+
+  database.query(sql, safeValues)
+    .then(results =>{
+      let id = results.rows[0].id;
+      sql = 'SELECT * FROM myBooks WHERE id = $1;';
+      safeValues = [id];
+      database.query(sql,safeValues)
+        .then(results =>{
+          console.log(results);
+          response.render('./pages/books/detail.ejs',{myBook : results.rows})
+        })
+    })
+}
+
+
+
 
 //404 error is no page is found
 app.get('*', (request, response) => response.render('./pages/error.ejs'));
@@ -112,6 +116,7 @@ function Book (obj) {
   //TODO: Prevent mixed content warnings, and obtain shelf
   this.image_url = (obj.imageLinks) ? obj.imageLinks.thumbnail : placeholderImage;
   this.isbn = obj.industryIdentifiers[0].identifier;
+  // this.bookShelf = 'Favorites'; // here is not yet in favorites
   // console.log(this.image);
   //ISBN - same as imageLinks
   // industryIdentifiers:
