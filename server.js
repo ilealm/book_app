@@ -49,17 +49,15 @@ function getOneBook(request, response){
 
 function addBook(request, response){
   console.log ('in addBook', request.body);
-  // TODO: we where trying to obtain the info to save on DB
   let {title, image_url, authors, description, isbn } = request.body;
-  // console.log('FORM VALUES: ', title, image_url, authors, description, isbn);
+  
 
   let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url) VALUES ($1, $2, $3, $4, $5) RETURNING ID;';
-  let safeValues = [title, image_url, authors, description, isbn];
-  // console.log('query: ', sql,safeValues);
+  let safeValues = [title, authors, description, isbn, image_url];
+
   database.query(sql, safeValues)
     .then(results =>{
       let id = results.rows[0].id;
-      // console.log('new row: ', id);
       sql = 'SELECT * FROM myBooks WHERE id = $1;';
       safeValues = [id];
       database.query(sql,safeValues)
@@ -111,7 +109,7 @@ function Book (obj) {
   this.title = (obj.title) ? obj.title : 'Chuck Norris says No';
   this.authors = (obj.authors[0]) ? obj.authors[0] : 'Iris Leal says she wrote this book';
   this.description = (obj.description) ? obj.description : 'Corey says you should probably just watch the moview';
-  //TODO: Prevent mixed content warnings
+  //TODO: Prevent mixed content warnings, and obtain shelf
   this.image_url = (obj.imageLinks) ? obj.imageLinks.thumbnail : placeholderImage;
   this.isbn = obj.industryIdentifiers[0].identifier;
   // console.log(this.image);

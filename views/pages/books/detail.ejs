@@ -1,26 +1,15 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/base.css">
-  <title>Best Books!</title>
-</head>
-<body>
   <h1>Best Books Datails</h1>
 
   <a href="./../"> Home </a>
-  <ol>
-  
-  <%myBook.forEach(result =>{%>
-    <img src="<%= result.image_url %>">
-    <li id="title"><%=result.title%> </li>
-    <li id="author"><%=result.author%> </li>
-    <li id="description"><%=result.description%> </li>
-    <li id="ISBN"><%=result.isbn%> </li>
-    
-  <%})%>
-</ol>
-</body>
-</html>
+  <seccion>
+    <%myBook.forEach(result =>{%>
+      <ul>
+        <img src="<%= result.image_url %>">
+        <li id="title"><%=result.title%> </li>
+        <li id="author"><%=result.author%> </li>
+        <li id="description"><%=result.description%> </li>
+        <li id="ISBN"><%=result.isbn%> </li>
+      </ul>
+    <%})%>
+  </seccion>
