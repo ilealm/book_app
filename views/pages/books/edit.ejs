@@ -1,18 +1,9 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <%- include ('../../layout/head.ejs') %>
-  <link rel="stylesheet" type="text/css" href="../styles/base.css"/>
+<!-- get info from database on the id that was selected, from the more details button -->
 
-</head>
-<body>
-  <h1>Best Books!</h1>
-  <h3>Here are the results of your seach</h3>
-  <!-- I want to display all of my results from the google Books API here using ejs -->
-  <%Book.forEach(result =>{%>
+<%Book.forEach(result =>{%>
 
-    <form method="POST" action="/books">
+    <form>
       <ol>
         <img src="<%= result.image_url %>">
         <li id="title"><%=result.title%> </li>
@@ -32,10 +23,3 @@
       <input type="hidden" name="bookShelf" value="<%= result.bookShelf %>"/>
     </form>
   <%})%>
-
-
-
-
-</body>
-</html>
-

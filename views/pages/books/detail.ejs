@@ -1,15 +1,24 @@
-  <h1>Best Books Datails</h1>
 
-  <a href="./../"> Home </a>
   <section>
-    <%myBook.forEach(result =>{%>
+    <%myBook.forEach(results =>{%>
+      <form action="/updateBooks" method="POST">
       <ul>
-        <img src="<%= result.image_url %>">
-        <li id="title"><%=result.title%> </li>
-        <li id="author"><%=result.author%> </li>
-        <li id="description"><%=result.description%> </li>
-        <li id="ISBN"><%=result.isbn%> </li>
-        <li id="bookShelf"><%=result.bookshelf%> </li>
+        <img src="<%= results.image_url %>">
+        <li id="title"><%=results.title%> </li>
+        <li id="author"><%=results.author%> </li>
+        <li id="description"><%=results.description%> </li>
+        <li id="ISBN"><%=results.isbn%> </li>
+        <li id="bookShelf"><%=results.bookshelf%> </li>
       </ul>
-    <%})%>
+      <button id="<%=results.id%>">update details</button>
+      <input type="hidden" name="title" value="<%= results.title %>"/>
+      <input type="hidden" name="image_url" value="<%= results.image_url %>"/>
+      <input type="hidden" name="authors" value="<%= results.authors %>"/>
+      <input type="hidden" name="description" value="<%= results.description %>"/>
+      <input type="hidden" name="isbn" value="<%= results.isbn %>"/>
+      <input type="hidden" name="bookShelf" value="<%= results.bookShelf %>"/>  
+    
+    </form>
+      <%})%>
+
   </section>

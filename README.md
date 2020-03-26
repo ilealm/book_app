@@ -54,17 +54,17 @@ Finish time:  10:00
 Actual time needed to complete: 50m.
 
 Number and name of feature: 11.6 - Home Page
-Estimate of time needed to complete: _____
-Start time: 
-Finish time: 
-Actual time needed to complete: 
+Estimate of time needed to complete: 30 min
+Start time: 10am
+Finish time: 10:30am
+Actual time needed to complete: 30 min
 
 
 Number and name of feature: 12.1 - 
 Estimate of time needed to complete: 45
-Start time: 10:10
-Finish time: 
-Actual time needed to complete: 
+Start time: 10:40
+Finish time: 11:30
+Actual time needed to complete: 55min
 
 
 Number and name of feature: 12.2 - View single book
@@ -78,3 +78,15 @@ Estimate of time needed to complete: 1.10
 Start time: 1:00; - 1:30, 6:00pm -7:00 pm 
 Finish time: 07:00pm
 Actual time needed to complete:  1.30
+
+Number and name of feature: 12.4 - layout - partial header/footer
+Estimate of time needed to complete: 30min
+Start time: 10:30am
+Finish time: 10:50
+Actual time needed to complete:20 min
+
+Number and name of feature: 12.5 - SMACSS - Modules
+Estimate of time needed to complete: 
+Start time: 
+Finish time: 
+Actual time needed to complete:
