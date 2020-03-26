@@ -25,6 +25,7 @@ app.get('/searches/new', (req, res) => {
 app.get('/',getAllMyBooks);
 app.post('/searches', doSearch);
 app.get('/books/:book_id',getOneBook);
+app.get('/updateBooks',updateOneBook);
 app.post('/books',addBook);
 
 //404 error is no page is found
@@ -77,7 +78,20 @@ function getOneBook(request, response){
   let safeValues = [myParams.book_id];
   database.query(sql,safeValues)
     .then(results =>{
-      response.render('pages/books/detail.ejs',{myBook : results.rows})
+        response.render('pages/books/show.ejs',{myBook : results.rows})
+        // response.render('pages/books/detail.ejs',{myBook : results.rows})
+    })
+}
+
+
+function updateOneBook(request, response){
+  let myParams= request.params;
+  let sql = 'SELECT * FROM myBooks WHERE id=$1;';
+  let safeValues = [myParams.book_id];
+  database.query(sql,safeValues)
+    .then(results =>{
+        // response.render('pages/books/show.ejs',{myBook : results.rows})
+        // response.render('pages/books/detail.ejs',{myBook : results.rows})
     })
 }
 
