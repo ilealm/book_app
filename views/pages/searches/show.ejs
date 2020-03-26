@@ -9,30 +9,20 @@
 </head>
 <body>
   <h1>Best Books!</h1>
- 
+  <h3>Here are the results of your seach</h3>
   <!-- I want to display all of my results from the google Books API here using ejs -->
   <%Book.forEach(result =>{%>
-    <!-- <img src="<%= result.image_url %>">
-    <li id="title"><%=result.title%> </li>
-    <li id="author"><%=result.author%> </li>
-    <li id="description"><%=result.description%> </li>
-    <li id="ISBN"><%=result.isbn%> </li> -->
+
     <form method="POST" action="/books">
-      <label>Title</label>
-      <input type="text" id="title" placeholder= "<%= result.title %>">
-      <br>
-      <label>Image URL</label>
-      <input type="text" id="image_url" placeholder= "<%= result.image_url %>">
-      <br>
-      <label>Author</label>
-      <input type="text" id="authors" placeholder= "<%= result.authors%>">
-      <br>
-      <label>Description</label>
-      <input type="text" id="description" placeholder= "<%= result.description %>">
-      <br>
-      <label>ISBN</label>
-      <input type="text" id="isbn" placeholder= "<%= result.isbn %>">
-      <br>
+      <ol>
+        <img src="<%= result.image_url %>">
+        <li id="title"><%=result.title%> </li>
+        <li id="author"><%=result.author%> </li>
+        <li id="description"><%=result.description%> </li>
+        <li id="ISBN"><%=result.isbn%> </li>
+        <!-- <li id="bookShelf"><%=result.bookShelf%> </li> -->
+      </ol>
+      <br> 
       <button type="submit">Add to my Books</button>
 
       <input type="hidden" name="title" value="<%= result.title %>"/>
@@ -40,6 +30,7 @@
       <input type="hidden" name="authors" value="<%= result.authors %>"/>
       <input type="hidden" name="description" value="<%= result.description %>"/>
       <input type="hidden" name="isbn" value="<%= result.isbn %>"/>
+      <input type="hidden" name="bookShelf" value="<%= result.bookShelf %>"/>
     </form>
   <%})%>
 
