@@ -48,9 +48,19 @@ function getOneBook(request, response){
 }
 
 function addBook(request, response){
-  console.log ('in addBook',request.body);
+  console.log ('in addBook', request.body);
   // TODO: we where trying to obtain the info to save on DB
+  let {title, image_url, authors, description, isbn } = request.body;
+  console.log(title, image_url, authors, description, isbn );
 
+  let sql = "INSERT INTO myBooks (title, author, description, isbn, image_url) VALUES ($1, $2, $3, $4, $5) RETURNING ID;";
+  let safeValues = [title, image_url, authors, description, isbn];
+  database.query(sql, safeValues)
+    .then(results =>{
+      let id = results.rows;
+      
+
+    })
 }
 
 

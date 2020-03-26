@@ -2,11 +2,11 @@ DROP TABLE IF EXISTS myBooks;
 
 CREATE TABLE myBooks (
   id serial primary key,
-  title VARCHAR(255),
-  author VARCHAR(255),
-  description VARCHAR(5000),
-  isbn VARCHAR(255),
-  image_url VARCHAR(2500),
+  title TEXT,
+  author TEXT,
+  description TEXT,
+  isbn TEXT,
+  image_url TEXT,
   bookShelf VARCHAR(2500)
 );
 
