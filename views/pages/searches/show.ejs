@@ -9,7 +9,7 @@
 </head>
 <body>
   <h1>Best Books!</h1>
-  <form method="POST" action="/books">
+ 
   <!-- I want to display all of my results from the google Books API here using ejs -->
   <%Book.forEach(result =>{%>
     <!-- <img src="<%= result.image_url %>">
@@ -17,26 +17,34 @@
     <li id="author"><%=result.author%> </li>
     <li id="description"><%=result.description%> </li>
     <li id="ISBN"><%=result.isbn%> </li> -->
-    <label>Title</label>
-    <input type="text" id="title" placeholder= "<%= result.title %>">
-    <br>
-    <label>Image URL</label>
-    <input type="text" id="title" placeholder= "<%= result.image_url %>">
-    <br>
-    <label>Author</label>
-    <input type="text" id="title" placeholder= "<%= result.authors%>">
-    <br>
-    <label>Description</label>
-    <input type="text" id="title" placeholder= "<%= result.description %>">
-    <br>
-    <label>ISBN</label>
-    <input type="text" id="title" placeholder= "<%= result.isbn %>">
-    <br>
-    <button type="submit">Add to my Books</button>
+    <form method="POST" action="/books">
+      <label>Title</label>
+      <input type="text" id="title" placeholder= "<%= result.title %>">
+      <br>
+      <label>Image URL</label>
+      <input type="text" id="image_url" placeholder= "<%= result.image_url %>">
+      <br>
+      <label>Author</label>
+      <input type="text" id="authors" placeholder= "<%= result.authors%>">
+      <br>
+      <label>Description</label>
+      <input type="text" id="description" placeholder= "<%= result.description %>">
+      <br>
+      <label>ISBN</label>
+      <input type="text" id="isbn" placeholder= "<%= result.isbn %>">
+      <br>
+      <button type="submit">Add to my Books</button>
+
+      <input type="hidden" name="title" value="<%= result.title %>"/>
+      <input type="hidden" name="title" value="<%= result.image_url %>"/>
+      <input type="hidden" name="title" value="<%= result.authors %>"/>
+      <input type="hidden" name="title" value="<%= result.description %>"/>
+      <input type="hidden" name="title" value="<%= result.isbn %>"/>
+    </form>
   <%})%>
 
 
-</form>
+
 
 </body>
 </html>
