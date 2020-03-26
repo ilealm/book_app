@@ -83,7 +83,6 @@ function addBook(request, response){
   console.log ('in addBook', request.body);
   let {title, image_url, authors, description, isbn } = request.body;
   let bookShelf = 'Favorites';
-
   let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url, bookShelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING ID;';
   let safeValues = [title, authors, description, isbn, image_url, bookShelf];
 
@@ -94,7 +93,7 @@ function addBook(request, response){
       safeValues = [id];
       database.query(sql,safeValues)
         .then(results =>{
-          console.log(results);
+        //   console.log(results);
           response.render('./pages/books/detail.ejs',{myBook : results.rows})
         })
     })

@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/base.css"/> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="styles/base.css"/>
+  <link rel="stylesheet" type="text/css" href="./styles/base.css"/>
   <title>My Favorite Books</title>
 </head>
 <body>
@@ -14,6 +16,7 @@
  <% myBooks.forEach(book =>{ %>
 <section>
     <img src="<%= book.image_url %>">
+    <li id="id"><%=book.id%> </li>
     <li id="title"><%=book.title%> </li>
     <li id="author"><%=book.author%> </li>
     <li id="description"><%=book.description%> </li>

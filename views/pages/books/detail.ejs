@@ -1,8 +1,7 @@
-
   <h1>Best Books Datails</h1>
 
   <a href="./../"> Home </a>
-  <seccion>
+  <section>
     <%myBook.forEach(result =>{%>
       <ul>
         <img src="<%= result.image_url %>">
@@ -13,4 +12,4 @@
         <li id="bookShelf"><%=result.bookshelf%> </li>
       </ul>
     <%})%>
-  </seccion>
+  </section>
