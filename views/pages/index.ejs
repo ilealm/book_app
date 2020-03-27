@@ -8,11 +8,14 @@
   <h1>My Favorite Books</h1>
   <a href="searches/new">Search Here!</a>
 
+<!-- display total count of books in favorites -->
+  <h3>Total Favorite Books <%= myBookCount[0].count %></h3>
+
   <ul>
  <% myBooks.forEach(book =>{ %>
 <section>
     <img src="<%= book.image_url %>">
-    <li id="id"><%=book.id%> </li>
+    <!-- <li id="id"><%= book.id%> </li> -->
     <li id="title"><%=book.title%> </li>
     <li id="author"><%=book.author%> </li>
     <li id="description"><%=book.description%> </li>
