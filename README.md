@@ -90,3 +90,15 @@ Estimate of time needed to complete:
 Start time: 
 Finish time: 
 Actual time needed to complete:
+
+Number and name of feature: 13.1-  update details
+Estimate of time needed to complete: 
+Start time: 5:30
+Finish time: 8:20
+Actual time needed to complete: 2:30 
+
+Number and name of feature: 13.2 - delete book
+Estimate of time needed to complete: 40
+Start time: 8:20m
+Finish time: 8:50m
+Actual time needed to complete: 30m

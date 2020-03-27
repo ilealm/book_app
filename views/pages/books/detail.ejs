@@ -21,6 +21,10 @@
         <input type="hidden" name="bookShelf" value="<%= results.bookshelf %>"/>  
       
       </form>
+      <form action="/deleteBooks" method="post">
+        <input type="hidden" name="id" value="<%= results.id %>"/>
+        <button type="submit">Delete Book</button>
+      </form>
       <%})%>
 
   </section>

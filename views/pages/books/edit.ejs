@@ -1,12 +1,10 @@
 
-<!-- get info from database on the id that was selected, from the more details button -->
-
 <%myBook.forEach(result =>{%>
 
-    <form>
+    <form action="<%=`/books/${result.id}?_method=PUT`%>" method="post">
      
-      <label> Title</label>
-      <input type="text" name="title" value="<%= result.title %>"/>
+      <label>Book Title</label>
+      <input type="text" name="title" value="<%= result.title %>"/> 
       <br>
       <label> Image url </label> 
       <input type="text" name="image_url" value="<%= result.image_url %>"/>
@@ -15,13 +13,24 @@
       <input type="text" name="authors" value="<%= result.author %>"/>
       <br>
       <label> Description</label>
+      <!-- <textarea rows="5" name="description" value="<%= result.description %>"> </textarea> -->
       <input type="text" name="description" value="<%= result.description %>"/>
       <br>
       <label> ISNB</label>
       <input type="text" name="isbn" value="<%= result.isbn %>"/>
       <br>
       <label> BookShelf</label>
-      <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/>
+      <!-- <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/> -->
+
+      <!-- TODO: SELECT OPTION OR THE USER AND EDIT THIS BookShelf -->
+      <select>
+      <% bookShelf.forEach(resultBS => {%>
+        
+        <option name="bookshelf" value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
+         <%})%>
+        </select>
+
+      <!-- <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/> -->
 
       <br> 
       <button type="submit">Yes, update!</button>
