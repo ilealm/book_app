@@ -30,6 +30,7 @@ app.get('/books/:book_id',getOneBook);
 app.put('/books/:book_id',updOneBook);
 app.post('/updateBooks',populateInfoToUpd);
 app.post('/books',addBook);
+app.post('/deleteBooks', deleteBook)
 
 //404 error is no page is found
 app.get('*', (request, response) => response.status(400).render('./pages/error.ejs'));
@@ -107,6 +108,18 @@ function updOneBook(request, response){
     })
 }
 
+function deleteBook(request,response){
+
+  let {id} = request.body
+  let sql = 'DELETE FROM myBooks WHERE id=$1;';
+  let safeValues = [id];
+  database.query(sql,safeValues)
+    .then(results =>{
+      getAllMyBooks(request, response)
+    })
+
+}
+
 function populateInfoToUpd(request, response){
   // let {id, title, image_url, authors, description, isbn, bookShelf } = request.body;
   let {id } = request.body;
@@ -125,7 +138,7 @@ function populateInfoToUpd(request, response){
 function addBook(request, response){
 //   console.log ('in addBook', request.body);
   let {title, image_url, authors, description, isbn } = request.body;
-  // let bookShelf = 'To delete';
+  let bookShelf = 'Favorites';
   let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url, bookShelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING ID;';
   let safeValues = [title, authors, description, isbn, image_url, bookShelf];
 
