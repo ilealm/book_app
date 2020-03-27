@@ -1,46 +1,52 @@
 
 <%myBook.forEach(result =>{%>
 
-    <form action="<%=`/books/${result.id}?_method=PUT`%>" method="post">
-     
-      <label>Book Title</label>
-      <input type="text" name="title" value="<%= result.title %>"/> 
-      <br>
-      <label> Image url </label> 
-      <input type="text" name="image_url" value="<%= result.image_url %>"/>
-      <br>
-      <label> Author(s)</label>
-      <input type="text" name="authors" value="<%= result.author %>"/>
-      <br>
-      <label> Description</label>
-      <!-- <textarea rows="5" name="description" value="<%= result.description %>"> </textarea> -->
-      <input type="text" name="description" value="<%= result.description %>"/>
-      <br>
-      <label> ISNB</label>
-      <input type="text" name="isbn" value="<%= result.isbn %>"/>
-      <br>
-      <label> BookShelf</label>
-      <!-- <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/> -->
+  <form action="<%=`/books/${result.id}?_method=PUT`%>" method="post">
+   
+    <label>Book Title</label>
+    <input type="text" name="title" value="<%= result.title %>"/> 
+    <br>
+    <label> Image url </label> 
+    <input type="text" name="image_url" value="<%= result.image_url %>"/>
+    <br>
+    <label> Author(s)</label>
+    <input type="text" name="authors" value="<%= result.author %>"/>
+    <br>
+    <label> Description</label>
+    <!-- <textarea rows="5" name="description" value="<%= result.description %>"> </textarea> -->
+    <input type="text" name="description" value="<%= result.description %>"/>
+    <br>
+    <label> ISNB</label>
+    <input type="text" name="isbn" value="<%= result.isbn %>"/>
+    <br>
+    <label> BookShelf</label>
+    
+    <input list="bookshelf" name="bookshelf">
 
-      <!-- TODO: SELECT OPTION OR THE USER AND EDIT THIS BookShelf -->
-      <select>
-      <% bookShelf.forEach(resultBS => {%>
-        
-        <option name="bookshelf" value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
-         <%})%>
-        </select>
+    <!-- TODO SELECT THE USER ORIGINAL OPTION  -->
+    <datalist id="bookshelf">
+      <% bookShelf.forEach(resultBS => {%>      
+        <% if (resultBS.bookshelf === result.bookshelf) { %>
+          <option value ="<%=resultBS.bookshelf%>" selected > <%=resultBS.bookshelf%></option>
+        <%}
+        else { %>
+          <option value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
+        <%}%>
+         <%})%> 
+    </datalist>
 
-      <!-- <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/> -->
 
-      <br> 
-      <button type="submit">Yes, update!</button>
+    <!-- <select>
+    <% bookShelf.forEach(resultBS => {%>      
+      <option name="bookshelf" value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
+       <%})%>
+    </select> -->
 
-      <input type="hidden" name="id" value="<%= result.id %>"/>
-      <!-- <input type="hidden" name="title" value="<%= result.title %>"/>
-      <input type="hidden" name="image_url" value="<%= result.image_url %>"/>
-      <input type="hidden" name="authors" value="<%= result.authors %>"/>
-      <input type="hidden" name="description" value="<%= result.description %>"/>
-      <input type="hidden" name="isbn" value="<%= result.isbn %>"/>
-      <input type="hidden" name="bookShelf" value="<%= result.bookShelf %>"/> -->
-    </form>
-  <%})%>
+
+
+    <br> 
+    <button type="submit">Yes, update!</button>
+
+    <input type="hidden" name="id" value="<%= result.id %>"/>
+  </form>
+<%})%>
