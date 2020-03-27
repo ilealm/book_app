@@ -38,10 +38,16 @@ app.get('*', (request, response) => response.status(400).render('./pages/error.e
 
 function getAllMyBooks(request, response){
   let sql = 'SELECT * FROM myBooks;';
-  database.query(sql)
+  //count of rows in myBooks
+  let sqlCount = 'SELECT COUNT(id) from myBooks;';
+  database.query(sqlCount)
+  .then(countResults => {
+    // console.log('sql count results', countResults.rows)
+    database.query(sql)
     .then(results =>{
       let arrMyBooks = results.rows;
-      response.render('./pages/index.ejs',{ myBooks : arrMyBooks});
+      response.render('./pages/index.ejs', ({ myBooks : arrMyBooks, myBookCount : countResults.rows }));
+    })
     })
 }
 
@@ -155,42 +161,15 @@ function addBook(request, response){
     })
 }
 
-
-
-
-
-//lab 11.3.2 - "Prevent mixed content warnings. Resource URLs returned by the API that are  unsecure should be converted to use a secure protocol when the data is processed in the Book constructor." ?????????????????
-
 function Book (obj) {
   const placeholderImage = 'http://i.imgur.com/J5LVHEL.jpg';
-  this.title = (obj.title) ? obj.title : 'Chuck Norris says No';
-  this.authors = (obj.authors[0]) ? obj.authors[0] : 'Iris Leal says she wrote this book';
-  this.description = (obj.description) ? obj.description : 'Corey says you should probably just watch the moview';
-  //TODO: Prevent mixed content warnings, and obtain shelf
+  this.title = (obj.title) ? obj.title : 'Title not available';
+  this.authors = (obj.authors[0]) ? obj.authors[0] : 'Author not available';
+  this.description = (obj.description) ? obj.description : 'Description not available';
+
   this.image_url = (obj.imageLinks) ? obj.imageLinks.thumbnail : placeholderImage;
-  this.isbn = obj.industryIdentifiers[0].identifier;
-  // this.bookShelf = 'Favorites'; // here is not yet in favorites
-  // console.log(this.image);
-  //ISBN - same as imageLinks
-  // industryIdentifiers:
-  //    [ { type: 'ISBN_13', identifier: '9781443816281' },
-  //      { type: 'ISBN_10', identifier: '1443816280' } ],
-
-  //   imageLinks:
-  //    { smallThumbnail:
-  //       'http://books.google.com/books/content?id=ThAaBwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-  //      thumbnail:
-  //       'http://books.google.com/
-
+  this.isbn = obj.industryIdentifiers[0].identifier ? obj.industryIdentifiers[0].identifier : 'ISBN not available'
 }
-
-
-// app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
-
-
-
-
-
 
 // only turn on the server if you first connect to the database
 database.connect()
