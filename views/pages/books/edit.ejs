@@ -27,7 +27,7 @@
     <datalist id="bookshelf">
       <% bookShelf.forEach(resultBS => {%>      
         <% if (resultBS.bookshelf === result.bookshelf) { %>
-          <option value ="<%=resultBS.bookshelf%>" selected > <%=resultBS.bookshelf%></option>
+          <option value ="<%=resultBS.bookshelf%>" selected="selected" > <%=resultBS.bookshelf%></option>
         <%}
         else { %>
           <option value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
