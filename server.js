@@ -7,12 +7,14 @@ app.use(cors());
 const PORT = process.env.PORT || 3001;
 const pg = require('pg');
 const superagent = require('superagent');
+const methodOverride = require('method-override');
 
 const ejs = require('ejs')
 app.set('view engine', 'ejs')
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
 
 
 const database = new pg.Client(process.env.DATABASE_URL);
@@ -25,7 +27,8 @@ app.get('/searches/new', (req, res) => {
 app.get('/',getAllMyBooks);
 app.post('/searches', doSearch);
 app.get('/books/:book_id',getOneBook);
-app.post('/updateBooks',updateOneBook);
+app.put('/books/:book_id',updOneBook);
+app.post('/updateBooks',populateInfoToUpd);
 app.post('/books',addBook);
 
 //404 error is no page is found
@@ -83,15 +86,27 @@ function getOneBook(request, response){
     })
 }
 
+function updOneBook(request, response){
+  console.log('in updOneBook');
+  
+  let {id, title, image_url, authors, description, isbn, bookshelf } = request.body;
+  bookshelf = 'Updated'; // TODO: obtain bookshelf from dropbox
 
-function updateOneBook(request, response){
+  let sql = 'UPDATE myBooks SET title=$1, image_url=$2, author=$3, description=$4, isbn=$5, bookshelf=$6 WHERE id=$7;';
+  let safeValues=[title, image_url, authors, description, isbn, bookshelf, id]
+  database.query(sql,safeValues)
+    .then(results => {
+      console.log('table upd',results);
+    })
+}
+
+function populateInfoToUpd(request, response){
   // let {id, title, image_url, authors, description, isbn, bookShelf } = request.body;
   let {id } = request.body;
   let sqlBook = 'SELECT * FROM myBooks WHERE id=$1;';
   let safeValues = [id];
   database.query(sqlBook,safeValues)
     .then(resultsSqlBook =>{
-      console.log('in updateOneBook');
       let sqlBookShelf = 'SELECT DISTINCT bookShelf FROM myBooks;';
       database.query(sqlBookShelf)
         .then(resultSqlBookShelf => {

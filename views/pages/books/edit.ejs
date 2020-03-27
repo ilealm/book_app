@@ -1,7 +1,7 @@
 
 <%myBook.forEach(result =>{%>
 
-    <form>
+    <form action="<%=`/books/${result.id}?_method=PUT`%>" method="post">
      
       <label>Book Title</label>
       <input type="text" name="title" value="<%= result.title %>"/> 
@@ -26,7 +26,7 @@
       <select>
       <% bookShelf.forEach(resultBS => {%>
         
-        <option value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
+        <option name="bookshelf" value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
          <%})%>
         </select>
 
@@ -35,7 +35,7 @@
       <br> 
       <button type="submit">Yes, update!</button>
 
-      <!-- <input type="hidden" name="id" value="<%= result.id %>"/> -->
+      <input type="hidden" name="id" value="<%= result.id %>"/>
       <!-- <input type="hidden" name="title" value="<%= result.title %>"/>
       <input type="hidden" name="image_url" value="<%= result.image_url %>"/>
       <input type="hidden" name="authors" value="<%= result.authors %>"/>
