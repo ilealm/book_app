@@ -91,13 +91,13 @@ function updOneBook(request, response){
   console.log('in updOneBook');
   
   let {id, title, image_url, authors, description, isbn, bookshelf } = request.body;
-  bookshelf = 'Updated'; // TODO: obtain bookshelf from dropbox
-
+  // bookshelf = 'Updated'; // TODO: obtain bookshelf from dropbox
+  console.log('value of bookshelf', bookshelf);
   let sql = 'UPDATE myBooks SET title=$1, image_url=$2, author=$3, description=$4, isbn=$5, bookshelf=$6 WHERE id=$7;';
   let safeValues=[title, image_url, authors, description, isbn, bookshelf, id]
   database.query(sql,safeValues)
     .then(results => {
-      console.log('table upd',results);
+      // console.log('table upd',results);
       let sqlUpdBook = 'SELECT * FROM myBooks WHERE id=$1;';
       let safeValuesId = [id];
       database.query(sqlUpdBook, safeValuesId)
