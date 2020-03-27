@@ -97,6 +97,13 @@ function updOneBook(request, response){
   database.query(sql,safeValues)
     .then(results => {
       console.log('table upd',results);
+      let sqlUpdBook = 'SELECT * FROM myBooks WHERE id=$1;';
+      let safeValuesId = [id];
+      database.query(sqlUpdBook, safeValuesId)
+        .then(updResults => {
+          // console.log(updResults.rows);
+          response.render('./pages/books/show.ejs',{myBook : updResults.rows})
+        })
     })
 }
 
