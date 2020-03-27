@@ -19,7 +19,7 @@ const database = new pg.Client(process.env.DATABASE_URL);
 database.on('error', err => console.error(err));
 
 app.get('/searches/new', (req, res) => {
-    res.render('pages/searches/new.ejs');
+  res.render('pages/searches/new.ejs');
 });
 
 app.get('/',getAllMyBooks);
@@ -39,7 +39,7 @@ function getAllMyBooks(request, response){
       let arrMyBooks = results.rows;
       response.render('./pages/index.ejs',{ myBooks : arrMyBooks});
     })
- }
+}
 
 function doSearch(request,response){
   // console.log('cd and li search', request.body);
@@ -62,7 +62,7 @@ function doSearch(request,response){
       // console.log(bookArray);
       // console.log(results.body.items[0].volumeInfo)
       //TODO VALIDATE IF BOOKARRAY IS EMPTY
-    //   console.log(bookArray[0].volumeInfo)
+      //   console.log(bookArray[0].volumeInfo)
       let finalBookArray = bookArray.map(book => {
         return new Book(book.volumeInfo);
       })
@@ -78,8 +78,8 @@ function getOneBook(request, response){
   let safeValues = [myParams.book_id];
   database.query(sql,safeValues)
     .then(results =>{
-        response.render('pages/books/show.ejs',{myBook : results.rows})
-        // response.render('pages/books/detail.ejs',{myBook : results.rows})
+      response.render('pages/books/show.ejs',{myBook : results.rows})
+      // response.render('pages/books/detail.ejs',{myBook : results.rows})
     })
 }
 
@@ -87,20 +87,23 @@ function getOneBook(request, response){
 function updateOneBook(request, response){
   // let {id, title, image_url, authors, description, isbn, bookShelf } = request.body;
   let {id } = request.body;
-  // console.log('we are in updateBooks',id);
-  let querybookShelfOpts = ''; // select distinct.....
-  let sql = 'SELECT * FROM myBooks WHERE id=$1;';
+  let sqlBook = 'SELECT * FROM myBooks WHERE id=$1;';
   let safeValues = [id];
-  database.query(sql,safeValues)
-    .then(results =>{
-      response.render('pages/books/edit.ejs',{myBook : results.rows});
+  database.query(sqlBook,safeValues)
+    .then(resultsSqlBook =>{
+      console.log('in updateOneBook');
+      let sqlBookShelf = 'SELECT DISTINCT bookShelf FROM myBooks;';
+      database.query(sqlBookShelf)
+        .then(resultSqlBookShelf => {
+          response.render('pages/books/edit.ejs',({myBook : resultsSqlBook.rows, bookShelf : resultSqlBookShelf.rows }));
+        })
     })
 }
 
 function addBook(request, response){
 //   console.log ('in addBook', request.body);
   let {title, image_url, authors, description, isbn } = request.body;
-  let bookShelf = 'Favorites';
+  // let bookShelf = 'To delete';
   let sql = 'INSERT INTO myBooks (title, author, description, isbn, image_url, bookShelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING ID;';
   let safeValues = [title, authors, description, isbn, image_url, bookShelf];
 
@@ -156,6 +159,6 @@ function Book (obj) {
 
 // only turn on the server if you first connect to the database
 database.connect()
-.then(() => {
+  .then(() => {
     app.listen(PORT,() => console.log(`Listening on port ${PORT}`));
-});
+  });

@@ -1,12 +1,10 @@
 
-<!-- get info from database on the id that was selected, from the more details button -->
-
 <%myBook.forEach(result =>{%>
 
     <form>
      
-      <label> Title</label>
-      <input type="text" name="title" value="<%= result.title %>"/>
+      <label>Book Title</label>
+      <input type="text" name="title" value="<%= result.title %>"/> 
       <br>
       <label> Image url </label> 
       <input type="text" name="image_url" value="<%= result.image_url %>"/>
@@ -15,18 +13,29 @@
       <input type="text" name="authors" value="<%= result.author %>"/>
       <br>
       <label> Description</label>
+      <!-- <textarea rows="5" name="description" value="<%= result.description %>"> </textarea> -->
       <input type="text" name="description" value="<%= result.description %>"/>
       <br>
       <label> ISNB</label>
       <input type="text" name="isbn" value="<%= result.isbn %>"/>
       <br>
       <label> BookShelf</label>
-      <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/>
+      <!-- <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/> -->
+
+      <!-- TODO: SELECT OPTION OR THE USER AND EDIT THIS BookShelf -->
+      <select>
+      <% bookShelf.forEach(resultBS => {%>
+        
+        <option value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
+         <%})%>
+        </select>
+
+      <!-- <input type="text" name="bookShelf" value="<%= result.bookshelf %>"/> -->
 
       <br> 
       <button type="submit">Yes, update!</button>
 
-      <input type="hidden" name="id" value="<%= result.id %>"/>
+      <!-- <input type="hidden" name="id" value="<%= result.id %>"/> -->
       <!-- <input type="hidden" name="title" value="<%= result.title %>"/>
       <input type="hidden" name="image_url" value="<%= result.image_url %>"/>
       <input type="hidden" name="authors" value="<%= result.authors %>"/>
