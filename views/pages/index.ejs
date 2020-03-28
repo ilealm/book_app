@@ -9,20 +9,27 @@
   <main>
     <h1 class="header">My Books List</h1>
     <a href="searches/new">Search</a>
-    <h4 class="secondHeader">Total Favorite Books: <%= myBookCount[0].count %></h4>
+    <h4 class="secondHeader">Saved Books: <%= myBookCount[0].count %></h4>
   </main>
 
   <% myBooks.forEach(book =>{ %>
-    <section class="sectionBook">
-     
-      <img src="<%= book.image_url %>">
+    <form method="get" action="/books/<%=book.id%>">
+      <section class="borderBook"> 
+        <section class="sectionBook">
+        
+          <img src="<%= book.image_url %>">
 
-      <label class="lbTitle"><%=book.title%> </label>
-      <!-- <br> -->
-      <label class="lbAuthor">By <%=book.author%> </label>
-      <br>
-      <a href="/books/<%=book.id%>">View details</a>  
+          <label class="lbTitle"><%=book.title%> </label>
+          <!-- <br> -->
+          <label class="lbAuthor">By <%=book.author%> </label>
+          <br>
+          <!-- <a href="/books/<%=book.id%>">View details</a>   -->
+
+          <button type="submit">View details</button>
+          </section>
       </section>
+      <br>
+      </form>
     <% })%>
 
 <!-- <footer>
