@@ -92,6 +92,226 @@ ul{
 
 }
 .imgBook{
+    width: 250px;
+    border: 5px white;
+
+}
+
+a {
+    background-color: black;
+    color: white;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start:3;
+    grid-column-end:4;
+    height: 100px;
+    line-height: 100px;
+    font-size: x-large;
+}
+
+h4{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start:1;
+    grid-column-end:4;
+}
+
+.secondHeader {
+    background-color: rgb(75, 72, 72);
+    color: white;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start:1;
+    grid-column-end:4;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    font-style: italic;
+    
+}
+
+
+
+.enterTitleOrAuthor {
+    background-color: white;
+    color: black;
+    font-size: 25px;
+    font-family: bold;
+
+}
+
+#btnAPI{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+
+.clsButton {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    width: 170px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+#a {
+  background-color: blue;
+
+}
+
+span {
+    font-size: 30px;
+    font-family: bold;
+    height: 30px;
+    line-height: 30px;
+}
+
+/* form { */
+.formClass{
+    display: grid;
+    grid-column-start: 2;
+    grid-row: 3 / 7;
+    text-align: center;
+    justify-self: stretch;
+    grid-template-rows: 80px 80px 80px 80px;
+    grid-row-gap: 20px;
+    text-align: left;
+    line-height: 100px;
+    color: white;
+    height: 700px;
+}
+  
+div{
+    display: grid;
+    /* grid-column-start: 2; */
+    /* grid-row: 3 / 7; */
+    text-align: center;
+    justify-self: stretch;
+    /* grid-template-rows: 80px 80px 80px 80px;
+    grid-row-gap: 20px; */
+    text-align: left;
+    line-height: 100px;
+    color: white;
+   
+}
+
+fieldset, span, input, label {
+    background-color: rgb(224, 209, 209);
+    color: black;
+}
+
+footer {
+    background-color: black;
+    height: 50px;
+}
+  
+  
+  
+
+
+
+/* ///////////////// Desktop ////////////// */
+@media all and (min-width:1024px){
+
+    * {
+    box-sizing: border-box;
+  }
+
+
+main {
+      /* height: 767px; */
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 100px 1fr 100px;
+      grid-template-rows: 100px 10%;
+      /* grid-template-rows: 100px 10% 10% 10% 10% 10% 10% 10% 10% 10% 1fr 10%; */
+      
+    }
+
+* {
+    background-color: rgb(79, 77, 77);
+}
+
+
+.borderBook{
+    padding: 30px;
+    background-color:gray;
+    align-content: center;
+    align-items: center;
+}
+
+
+.sectionBook{
+    width: 75%;
+    background-color:darkgray;
+    text-align: center;
+    padding-bottom: 30px;
+    margin: 0 auto;
+}
+
+
+.borderBookOneBook{
+    background-color:gray;
+    align-content: center;
+    align-items: center;
+}
+.sectionBookOneBook{
+    width: 75%;
+    background-color:darkgray;
+    text-align: center;
+        margin: 0 auto;
+}
+
+
+
+.lbTitle{
+    display: block;
+    background-color:darkgray;
+    padding: 10px;
+    font-size: x-large;
+
+}
+
+.lbAuthor{
+    display: block;
+    background-color:darkgray;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.lbDescription{
+    display: block;
+    background-color:darkgray;
+    font-size: 20px;
+}
+
+
+
+
+ul{
+    list-style-type:none;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start:1;
+    grid-column-end:4;
+    margin: 0px;
+    height: 100px;
+    line-height: 100px;
+
+}
+.imgBook{
     width: 200px;
     border: 5px white;
 
@@ -209,63 +429,4 @@ fieldset, span, input, label {
 footer {
     background-color: black;
     height: 50px;
-}
-  
-  
-  
-
-
-
-/* ///////////////// Desktop ////////////// */
-@media all and (min-width:1024px){
-
-
-* {
-    background-color:rgb(79, 77, 77);
-}
-a{
-    color: white;
-    font-size: 20px;
-    padding-right: 20px;
-}
-
-h1 {
-    color:white;
-    background-color: black;
-}
-
-body{
-    background-color: lightgrey;
-}
-
-img{
-    width: 200px;
-    margin-top: 20px;
-}
-
-
-
-
-#description{
-    background-color: white
-}
-
-#title, #author{
-    background-color: lightgrey;
-}
-
-#title{
-    color:white;
-}
-
-#ISBN{
-    background-color: lightgrey;
-}
-
-ol{
-    background-color: gray;
-}
-
-
-
 }
