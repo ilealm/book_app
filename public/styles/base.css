@@ -18,13 +18,7 @@ main {
 * {
     background-color: rgb(79, 77, 77);
 }
-/* 
-div{
-    padding: 50px;
-    align-content: center;
-    text-align: center;
-    clear: both;
-} */
+
 
 .borderBook{
     padding: 30px;
@@ -138,32 +132,24 @@ h4{
     
 }
 
-/* h3{
-    font-style: italic;
-}
 
-#numMyBooks{
-    background-color:lightgrey;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    grid-column-start:1;
-    grid-column-end:4;
-} */
 
 .enterTitleOrAuthor {
     background-color: white;
     color: black;
     font-size: 25px;
     font-family: bold;
-    /* grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column-start:2;
-    grid-column-end:3; */
+
+}
+
+#btnAPI{
+    background-color: black;
+    color: white;
+    font-size: 20px;
 }
 
 
-
-button {
+.clsButton {
     background-color: black;
     color: white;
     font-size: 20px;
@@ -176,10 +162,7 @@ button {
 
 #a {
   background-color: blue;
-  /* grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start:1;
-  grid-column-end:3; */
+
 }
 
 span {
