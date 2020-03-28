@@ -2,14 +2,24 @@
   <section>
     <%myBook.forEach(results =>{%>
         <form action="/updateBooks" method="post">
-        <ul>
-          <img src="<%= results.image_url %>">
-          <li id="title"><%=results.title%> </li>
-          <li id="author"><%=results.author%> </li>
-          <li id="description"><%=results.description%> </li>
-          <li id="ISBN"><%=results.isbn%> </li>
-          <li id="bookShelf"><%=results.bookshelf%> </li>
-        </ul>
+
+
+          <section class="borderBook"> 
+            <section class="sectionBook">
+              <img src="<%= results.image_url %>">
+              <label class="lbTitle"><%=results.title%> </label>
+              <label class="lbAuthor">By <%=results.author%> </label>
+              <br>
+              <label class="lbDescription"> <%=results.description%> </label>
+              <br>
+              <label class="lbDescription">ISBN: <%=results.isbn%> </label>
+              <br>
+              <label class="lbDescription">Bookshelf: <%=results.bookshelf%> </label>
+              <br>
+         
+              </section>
+          </section>
+
         <button type="submit">Update Details</button>
 
         <input type="hidden" name="id" value="<%= results.id %>"/>

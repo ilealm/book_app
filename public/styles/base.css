@@ -56,6 +56,12 @@ div{
     font-size: 20px;
 }
 
+.lbDescription{
+    display: block;
+    background-color:darkgray;
+    font-size: 20px;
+}
+
 ul{
     list-style-type:none;
 }
