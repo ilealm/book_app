@@ -7,22 +7,34 @@
 
 </head>
 <body>
-  <h1>Best Books!</h1>
-  <h3>Here are the results of your seach</h3>
+
+  <main>
+    <h1 class="header" >Best Books!</h1>
+    <a href="./../"> Home </a>
+    <h4 class="secondHeader">Here are the results of your seach</h4>
+  </main>
+
+
+
   <!-- I want to display all of my results from the google Books API here using ejs -->
   <%Book.forEach(result =>{%>
 
     <form method="POST" action="/books">
-      <ol>
-        <img src="<%= result.image_url %>">
-        <li id="title"><%=result.title%> </li>
-        <li id="author"><%=result.author%> </li>
-        <li id="description"><%=result.description%> </li>
-        <li id="ISBN"><%=result.isbn%> </li>
-        <!-- <li id="bookShelf"><%=result.bookShelf%> </li> -->
-      </ol>
-      <br> 
-      <button type="submit">Add to my Books</button>
+      <section class="borderBook"> 
+        <section class="sectionBook">
+          <img src="<%= result.image_url %>">
+          <label class="lbTitle"><%=result.title%> </label>
+          <label class="lbAuthor">By <%=result.authors%> </label>
+          <label class="lbDescription"><%=result.description%> </label>
+          <br>
+          <label class="lbDescription">ISBN: <%=result.isbn%> </label>
+          <br>
+          <button type="submit" class="clsButton">Add to my Books</button>
+          </section>
+      </section>
+      <br>
+
+  
 
       <input type="hidden" name="title" value="<%= result.title %>"/>
       <input type="hidden" name="image_url" value="<%= result.image_url %>"/>
