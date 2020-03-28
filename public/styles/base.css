@@ -33,6 +33,7 @@ div{
     align-items: center;
 }
 
+
 .sectionBook{
     width: 75%;
     background-color:darkgray;
@@ -40,6 +41,21 @@ div{
     padding-bottom: 30px;
     margin: 0 auto;
 }
+
+
+.borderBookOneBook{
+    background-color:gray;
+    align-content: center;
+    align-items: center;
+}
+.sectionBookOneBook{
+    width: 75%;
+    background-color:darkgray;
+    text-align: center;
+        margin: 0 auto;
+}
+
+
 
 .lbTitle{
     display: block;
@@ -144,13 +160,16 @@ h4{
 
 
 
-
 button {
     background-color: black;
     color: white;
     font-size: 20px;
-    
+    width: 170px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
 }
+
 
 #a {
   background-color: blue;

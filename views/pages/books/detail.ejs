@@ -1,11 +1,10 @@
-
   <section>
     <%myBook.forEach(results =>{%>
         <form action="/updateBooks" method="post">
 
 
-          <section class="borderBook"> 
-            <section class="sectionBook">
+          <section class="borderBookOneBook"> 
+            <section class="sectionBookOneBook">
               <img src="<%= results.image_url %>">
               <label class="lbTitle"><%=results.title%> </label>
               <label class="lbAuthor">By <%=results.author%> </label>
@@ -16,11 +15,11 @@
               <br>
               <label class="lbDescription">Bookshelf: <%=results.bookshelf%> </label>
               <br>
-         
+              <button type="submit">Update Details</button>
               </section>
           </section>
 
-        <button type="submit">Update Details</button>
+        <!-- <button type="submit">Update Details</button> -->
 
         <input type="hidden" name="id" value="<%= results.id %>"/>
         <input type="hidden" name="title" value="<%= results.title %>"/>
@@ -32,8 +31,13 @@
       
       </form>
       <form action="/deleteBooks" method="post">
-        <input type="hidden" name="id" value="<%= results.id %>"/>
-        <button type="submit">Delete Book</button>
+        <section class="borderBookOneBook"> 
+          <section class="sectionBookOneBook">
+            <input type="hidden" name="id" value="<%= results.id %>"/>
+            
+            <button type="submit">Delete Book</button>
+          </section>
+        </section>
       </form>
       <%})%>
 
