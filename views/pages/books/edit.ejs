@@ -1,52 +1,52 @@
 
-<%myBook.forEach(result =>{%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ('../../layout/head.ejs') %>
+    <link rel="stylesheet" type="text/css" href="../styles/base.css"/>
+  </head>
+  <body>
+    <main>
+      <h1 class="header" >Best Books!</h1>
+      <a href="./../"> Home </a>
+      <h4 class="secondHeader">Please enter the information to edit</h4>
+    </main>
 
-  <form action="<%=`/books/${result.id}?_method=PUT`%>" method="post">
-   
-    <label>Book Title</label>
-    <input type="text" name="title" value="<%= result.title %>"/> 
-    <br>
-    <label> Image url </label> 
-    <input type="text" name="image_url" value="<%= result.image_url %>"/>
-    <br>
-    <label> Author(s)</label>
-    <input type="text" name="authors" value="<%= result.author %>"/>
-    <br>
-    <label> Description</label>
-    <!-- <textarea rows="5" name="description" value="<%= result.description %>"> </textarea> -->
-    <input type="text" name="description" value="<%= result.description %>"/>
-    <br>
-    <label> ISNB</label>
-    <input type="text" name="isbn" value="<%= result.isbn %>"/>
-    <br>
-    <label> BookShelf</label>
-    
-    <input list="bookshelf" name="bookshelf">
 
+
+    <%myBook.forEach(result =>{%>
+
+      <form action="<%=`/books/${result.id}?_method=PUT`%>" method="post" class="formClass">
+
+        <input class="enterTitleOrAuthor" type="text" name="title" value="<%= result.title %>"/> 
+        <input class="enterTitleOrAuthor" type="text" name="image_url" value="<%= result.image_url %>"/>
+        <input class="enterTitleOrAuthor" type="text" name="authors" value="<%= result.author %>"/>
+        <input class="enterTitleOrAuthor" type="text" name="description" value="<%= result.description %>"/>
+        <input class="enterTitleOrAuthor" type="text" name="isbn" value="<%= result.isbn %>"/>
+        <input class="enterTitleOrAuthor" list="bookshelf" name="bookshelf">
     <!-- TODO SELECT THE USER ORIGINAL OPTION  -->
-    <datalist id="bookshelf">
-      <% bookShelf.forEach(resultBS => {%>      
-        <% if (resultBS.bookshelf === result.bookshelf) { %>
-          <option value ="<%=resultBS.bookshelf%>" selected="selected" > <%=resultBS.bookshelf%></option>
-        <%}
-        else { %>
-          <option value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
-        <%}%>
-         <%})%> 
-    </datalist>
+        <datalist id="bookshelf">
+          <% bookShelf.forEach(resultBS => {%>      
+            <% if (resultBS.bookshelf === result.bookshelf) { %>
+              <option value ="<%=resultBS.bookshelf%>" selected="selected" > <%=resultBS.bookshelf%></option>
+            <%}
+            else { %>
+              <option value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
+            <%}%>
+             <%})%> 
+        </datalist>
+    
+        <br> 
+        <button type="submit">Yes, update!</button>
+    
+        <input type="hidden" name="id" value="<%= result.id %>"/>
+      </form>
+    <%})%>
 
 
-    <!-- <select>
-    <% bookShelf.forEach(resultBS => {%>      
-      <option name="bookshelf" value ="<%=resultBS.bookshelf%>" > <%=resultBS.bookshelf%></option>
-       <%})%>
-    </select> -->
+    </body>
+    <footer>
+          
+  </footer>
+</html>
 
-
-
-    <br> 
-    <button type="submit">Yes, update!</button>
-
-    <input type="hidden" name="id" value="<%= result.id %>"/>
-  </form>
-<%})%>
