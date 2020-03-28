@@ -86,7 +86,7 @@ Finish time: 10:50
 Actual time needed to complete:20 min
 
 Number and name of feature: 12.5 - SMACSS - Modules
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 90 min
 Start time: 
 Finish time: 
 Actual time needed to complete:
