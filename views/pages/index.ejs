@@ -3,30 +3,30 @@
 <head>
   <%- include ('../layout/head.ejs') %>
   <link rel="stylesheet" type="text/css" href="./styles/base.css"/>
+  <!-- <link rel="stylesheet" type="text/css" href="./styles/layout.css"/> -->
  </head>
 <body>
-  <h1>My Favorite Books</h1>
-  <a href="searches/new">Search Here!</a>
+  <main>
+    <h1 class="header">My Books List</h1>
+    <a href="searches/new">Search</a>
+    <h4 class="secondHeader">Total Favorite Books: <%= myBookCount[0].count %></h4>
+  </main>
 
-<!-- display total count of books in favorites -->
-  <h3>Total Favorite Books <%= myBookCount[0].count %></h3>
+  <% myBooks.forEach(book =>{ %>
+    <section class="sectionBook">
+     
+      <img src="<%= book.image_url %>">
 
-  <ul>
- <% myBooks.forEach(book =>{ %>
-<section>
-    <img src="<%= book.image_url %>">
-    <!-- <li id="id"><%= book.id%> </li> -->
-    <li id="title"><%=book.title%> </li>
-    <li id="author"><%=book.author%> </li>
-    <li id="description"><%=book.description%> </li>
-    <li id="isbn"><%=book.isbn%> </li>
-    <li id="bookShelf"><%=book.bookshelf%> </li>
-    <a href="/books/<%=book.id%>">View details</a>  
- <% })%>
+      <label class="lbTitle"><%=book.title%> </label>
+      <!-- <br> -->
+      <label class="lbAuthor">By <%=book.author%> </label>
+      <br>
+      <a href="/books/<%=book.id%>">View details</a>  
+      </section>
+    <% })%>
 
-</section>  
-</ul>
-
-
+<!-- <footer>
+        
+</footer> -->
 </body>
 </html>

@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+  background-color: yellow;
+}
+
+main {
+  height: 767px;
+  margin: 0 auto solid;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  grid-template-rows: 100px 10% 10% 10% 10% 10% 10% 10% 10% 10% 1fr 10%;
+  /* grid-template-rows: 100px 75px 125px 125px 250px 250px 80px; */
+}
+
+<h1>{
+  grid-column-start: 1;
+  grid-column-end:4;
+  grid-row-start: 1;
+  grid-row-end:1;
+  background-color: blue;
+}
+
